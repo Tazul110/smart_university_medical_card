@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Student Information Form</title>
+	<style>
+		body {
+			background-image: url(https://scontent.fdac99-1.fna.fbcdn.net/v/t1.18169-9/10933793_10152613859304327_1535843851289934532_n.png?_nc_cat=102&ccb=1-7&_nc_sid=7f8c78&_nc_eui2=AeHffzupIZRgUy44bXipvHFvBnQSOsUEAmAGdBI6xQQCYH18Qv47_PkdzGRxKeiGgb_cLQM80U6fbeAVrfAbYN6o&_nc_ohc=85Vzya39GJkAX9zSRTm&_nc_ht=scontent.fdac99-1.fna&oh=00_AfBaTWvnU3RbKx5-u1iyGF_4A1viNETu1j9B8nfaHUBZ9g&oe=657489A1);
+			 background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed
+			
+		}
+
+		.container {
+			max-width: 600px;
+			margin: 0 auto;
+		}
+
+		h1 {
+			text-align: center;
+		}
+
+		form {
+			border: 1px solid #ccc;
+			padding: 20px;
+			border-radius: 10px;
+		}
+
+		label {
+			display: block;
+			margin-bottom: 5px;
+		}
+
+		input,
+		select {
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 10px;
+		}
+
+		button {
+			background-color: #007bff;
+			color: #fff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		
+		 /* Styles for the navigation bar */
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+        }
+        /* Style for the navigation bar buttons */
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        /* Style for button hover effect */
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+	</style>
+</head>
+
+<body>
+	
+	<div class="navbar">
+		<a href="/">Home</a>
+        <a href="Show_all_Students">Show All Students</a>
+        <a href="/createAccount">Add Student</a>
+        <a href="/id">Search</a>
+    </div>
+    
+	<div class="container">
+		<h1>Student Information Form</h1>
+		<form action="/Created_student_account" method="post" enctype="multipart/form-data">
+			<label for="studentId"><strong>Student ID</strong></label>
+			<input type="text" id="studentId" name="studentId" required>
+
+			<label for="studentName"><strong>Student Name</strong></label>
+			<input type="text" id="studentName" name="studentName" required>
+
+			<label for="department"><strong>Department</strong></label>
+			<select id="department" name="department" required>
+				<option value="cse">Computer Science and Engineering</option>
+				<option value="ict">Information and Communication Technology</option>
+				<option value="te">Textile Engineering</option>
+				<option value="me">Mechanical Engineering</option>
+				<option value="esrm">Environmental Science and Resource Management</option>
+				<option value="cps">Criminology and Police Science</option>
+				<option value="ftns">Food Technology and Nutritional Science</option>
+				<option value="bge">Biotechnology and Genetic Engineering</option>
+				<option value="bmb">Biochemistry and Molecular Biology</option>
+				<option value="pharmacy">Pharmacy</option>
+				<option value="chemistry">Chemistry</option>
+				<option value="mathematics">Mathematics</option>
+				<option value="physics">Physics</option>
+				<option value="statistics">Statistics</option>
+				<option value="business-admin">Business Administration</option>
+				<option value="accounting">Accounting</option>
+				<option value="management">Management</option>
+				<option value="economics">Economics</option>
+				<option value="english">English</option>
+			</select>
+
+
+			<label for="gender"><strong>Gender</strong></label>
+			<select id="gender" name="gender" required>
+				<option value="male">Male</option>
+				<option value="female">Female</option>
+				<option value="other">Other</option>
+			</select>
+
+			<label for="dateOfBirth"><strong>Date of Birth</strong></label>
+			<input type="date" id="dateOfBirth" name="dateOfBirth" required>
+            
+            <label for="studentName"><strong>Student Email</strong></label>
+			<input type="text" id="studentEmail" name="studentEmail" required>
+			
+			<label for="image"><strong>Upload an Image</strong></label>
+			<input type="file" id="image" name="image" accept="image/*" required>
+
+			<button type="submit">Submit</button>
+		</form>
+	</div>
+</body>
+
+</html>

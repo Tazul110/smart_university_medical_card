@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Student Details</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<style>
+		/* Custom CSS styles */
+		body {
+			padding-top: 70px;
+			/* Add padding to the body to account for the fixed navigation bar */
+		}
+
+		.student-details {
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 20px;
+		}
+
+		.student-info-card {
+			border: 1px solid #dcdcdc;
+			border-radius: 5px;
+			padding: 20px;
+		}
+
+		.student-info-card h5 {
+			font-size: 20px;
+			margin-bottom: 20px;
+		}
+
+		.laptop-card {
+			border: 1px solid #dcdcdc;
+			border-radius: 5px;
+			margin-top: 10px;
+			padding: 15px;
+		}
+
+		/* Styles for the fixed navigation bar */
+		.navbar {
+			background-color: #333;
+			position: fixed;
+			width: 100%;
+			top: 0;
+			z-index: 1000;
+			/* Ensure the navigation bar is on top of other elements */
+		}
+
+		/* Style for the navigation bar buttons */
+		.navbar a {
+			float: left;
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+
+		/* Style for button hover effect */
+		.navbar a:hover {
+			background-color: #ddd;
+			color: black;
+		}
+	</style>
+</head>
+
+<body>
+
+	<nav class="navbar navbar-dark bg-dark">
+		<div>
+			<a href="/">Home</a>
+			<a href="Show_all_Students">Show All Students</a>
+			<a href="/createAccount">Add Student</a>
+			<a href="/id">Search</a>
+			<a th:href="@{/prescription_form(studentId=${student.s_Id})}">New Prescription</a>
+
+
+		</div>
+	</nav>
+
+	<!--
+	<div class="card mb-3" style="max-width: 540px;">
+		<div class="row g-0">
+			<div class="col-md-4">
+				<img th:src="@{${'/display?id=' + student.s_Id}}" class="img-fluid rounded-start" alt="..." width="200"
+					height="250">
+			</div>
+			<div class="col-md-8">
+				<div class="card-body">
+					<p><strong>ID:</strong> <span th:text="${student.s_Id}"></span></p>
+					<p><strong>Name:</strong> <span th:text="${student.s_Name}"></span></p>
+					<p><strong>Dept:</strong> <span th:text="${student.s_Dept}"></span></p>
+					<p><strong>Gender:</strong> <span th:text="${student.s_Gender}"></span></p>
+					<p><strong>Birth-Date:</strong> <span th:text="${student.b_Date}"></span></p>
+
+				</div>
+			</div>
+		</div>
+	</div>
+-->
+
+	<div class="container">
+		<div class="student-details">
+			<h1 class="text-center">Student Details</h1>
+
+			<div class="card mb-3" style="max-width: 540px;">
+				<div class="row g-0">
+					<div class="col-md-4">
+						<img th:src="@{${'/display?id=' + student.s_Id}}" class="img-fluid rounded-start" alt="..."
+							width="200" height="250">
+					</div>
+					<div class="col-md-8">
+						<div class="card-body">
+							<p><strong>ID:</strong> <span th:text="${student.s_Id}"></span></p>
+							<p><strong>Name:</strong> <span th:text="${student.s_Name}"></span></p>
+							<p><strong>Dept:</strong> <span th:text="${student.s_Dept}"></span></p>
+							<p><strong>Gender:</strong> <span th:text="${student.s_Gender}"></span></p>
+							<p><strong>Birth-Date:</strong> <span th:text="${student.b_Date}"></span></p>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--
+<div class="row">
+    <div class="col-md-6">
+        <div class="student-info-card">
+            <h5 class="text-primary">Student Information</h5>
+            <img th:src="@{${'/display?id=' + student.s_Id}}" class="card-img-top" alt="" width="200" height="250">
+            <p><strong>ID:</strong> <span th:text="${student.s_Id}"></span></p>
+            <p><strong>Name:</strong> <span th:text="${student.s_Name}"></span></p>
+            <p><strong>Dept:</strong> <span th:text="${student.s_Dept}"></span></p>
+            <p><strong>Gender:</strong> <span th:text="${student.s_Gender}"></span></p>
+            <p><strong>Birth-Date:</strong> <span th:text="${student.b_Date}"></span></p>
+            
+        </div>
+    </div>
+</div>
+-->
+
+			<br>
+			<p><strong>Prescriptions:</strong></p>
+			<div th:each="prescription : ${student.Prescription}">
+				<div class="laptop-card">
+					<h5 class="text-success">Medication: <span th:text="${prescription.medication}"></span></h5>
+					<h5 class="text-success">Dosage: <span th:text="${prescription.dosage}"></span></h5>
+					<h5 class="text-success">Instructions: <span th:text="${prescription.instructions}"></span></h5>
+					<h5 class="text-success">Refill: <span th:text="${prescription.refill}"></span></h5>
+
+						<h6  style="color: black;">Date: <span
+								th:text="${prescription.date}"></span></h6>
+					
+					   <div th:each="medicine : ${Prescription.medicines}">
+                        <div class="laptop-model">
+                            <p><strong>medicine name:</strong> <span th:text="${medicine.m_name}"></span></p>
+                            <p><strong>Model Name:</strong> <span th:text="${medicine.m_type}"></span></p>
+                        </div>
+				</div>
+			</div>
+		</div>
+
+		<footer class="bg-dark text-white text-center py-3">
+			&copy; 2023 MBSTU Medical !
+		</footer>
+
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
